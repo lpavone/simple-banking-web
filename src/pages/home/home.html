@@ -1,0 +1,39 @@
+<ion-content padding>
+
+   <ion-grid style="width:100%">
+      <ion-row justify-content-center align-items-center>
+         <ion-card class="card-content-md" style="width: 35rem" text-center no-padding>
+            <img src="assets/imgs/logo.jpg" />
+            <ion-card-content>
+               <ion-card-title>
+                  Simple Banking
+               </ion-card-title>
+               <p>
+                  Enter your account to access
+                  <br />or create a new account.
+               </p>
+               <div class="form-group">
+
+               </div>
+               <div style="text-align:center">
+               </div>
+            </ion-card-content>
+
+            <ion-item text-center>
+               <ion-label stacked>Account number</ion-label>
+               <ion-input type="number" [(value)]="accountNumber" placeholder="000" text-center></ion-input>
+            </ion-item>
+
+            <ion-item text-center>
+               <button ion-button default color="secondary" round (click)="login()">
+                  <ion-icon name="lock"></ion-icon>&nbsp;Sign in
+               </button>
+               <button ion-button default round (click)="newAccount()">
+                  <ion-icon name="add"></ion-icon>&nbsp;New Account
+               </button>
+            </ion-item>
+         </ion-card>
+      </ion-row>
+   </ion-grid>
+
+</ion-content>
