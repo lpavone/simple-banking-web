@@ -21,7 +21,7 @@
 
             <ion-item text-center>
                <ion-label stacked>Account number</ion-label>
-               <ion-input type="number" [(value)]="accountNumber" placeholder="000" text-center></ion-input>
+               <ion-input type="number" [(ngModel)]="accountNumber" name="accountNumber" placeholder="000" text-center></ion-input>
             </ion-item>
 
             <ion-item text-center>
@@ -32,6 +32,7 @@
                   <ion-icon name="add"></ion-icon>&nbsp;New Account
                </button>
             </ion-item>
+            
          </ion-card>
       </ion-row>
    </ion-grid>

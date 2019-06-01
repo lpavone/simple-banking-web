@@ -1,0 +1,22 @@
+<ion-header>
+   <ion-navbar>
+      <ion-title>
+         <ion-grid>
+            <ion-row>
+               <ion-col col-2 text-left>
+                  <a (click)="back()"><ion-icon name="arrow-round-back"></ion-icon></a>
+               </ion-col>
+               <ion-col>
+                  <img src="assets/imgs/logo.jpg" class="footer-img">&nbsp;
+                  Simple Banking
+               </ion-col>
+               <ion-col col-2 text-right>
+                  <a (click)="logout()"><ion-icon name="exit"></ion-icon></a>
+               </ion-col>
+            </ion-row>
+         </ion-grid>
+      </ion-title>
+   </ion-navbar>
+</ion-header>
+
+<ion-nav [root]="rootPage" style="margin-top: 60px;"></ion-nav>

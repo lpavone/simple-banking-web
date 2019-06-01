@@ -1,54 +1,65 @@
 <ion-content padding>
 
-    <ion-grid style="width:100%">
+   <ion-grid>
 
-        <ion-row justify-content-center align-items-center>
-            <div class="alert alert-info">
-                Create a new account
-            </div>
-        </ion-row>
+      <ion-row justify-content-center align-items-center>
+         <div class="alert alert-info">
+            Create a new account
+         </div>
+      </ion-row>
 
-        <ion-row justify-content-center align-items-center>
-            <form>
-                <div class="form-group">
-                    <ion-label stacked>Name</ion-label>
-                    <ion-input type="text" name="name" [(value)]="newAccount.name" placeholder="Full name"></ion-input>
-                </div>
-                <div class="form-group">
-                    <ion-label stacked>Email</ion-label>
-                    <ion-input type="email" name="email" [(value)]="newAccount.email" placeholder="Enter email">
-                    </ion-input>
-                </div>
-                <div class="form-group">
-                    <ion-label stacked>Address</ion-label>
-                    <ion-input type="text" name="address'" [(value)]="newAccount.address"
-                        placeholder="Enter your address"></ion-input>
-                </div>
-                <div class="form-group">
-                    <ion-label stacked>Phone number</ion-label>
-                    <ion-input type="text" name="phoneNumber" [(value)]="newAccount.phoneNumber"
-                        placeholder="Phone number"></ion-input>
-                </div>
-                <div class="form-group">
-                    <ion-label stacked>Account currency</ion-label>
-                    <select [(ngModel)]="newAccount.currency" name="currency" class="form-control">
-                        <option *ngFor="let currency of currencies" [value]="currency">{{currency.currency}}</option>
-                    </select>
-                </div>
+      <form [formGroup]="formGroup">
+         
+         <ion-item>
+            <ion-label stacked>Name</ion-label>
+            <ion-input type="text" [(ngModel)]="accountUser.name" formControlName="name" placeholder="Full name"></ion-input>
+         </ion-item>
+         <p *ngIf="formGroup.controls['name'].dirty && formGroup.controls['name'].errors">Invalid name</p>
 
-                <ion-item text-center>
-                    <button ion-button default color="secondary" round (click)="createAccount()">
-                        <ion-icon name="save"></ion-icon>&nbsp;Create
-                    </button>
-                    <button ion-button default round (click)="back()">
-                        <ion-icon name="arrow-round-back"></ion-icon>&nbsp;Back
-                    </button>
-                </ion-item>
+         <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="accountUser.email" formControlName="email" placeholder="Enter email"></ion-input>
+         </ion-item>
+         <p *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors">Invalid email</p>
 
-            </form>
+         <ion-item>
+            <ion-label stacked>Document ID</ion-label>
+            <ion-input type="documentID" [(ngModel)]="accountUser.documentID" formControlName="documentID" placeholder="Enter document ID"></ion-input>
+         </ion-item>
+         <p *ngIf="formGroup.controls['documentID'].dirty && formGroup.controls['documentID'].errors">Invalid Document ID</p>
 
-        </ion-row>
-    </ion-grid>
+         <ion-item>
+            <ion-label stacked>Address</ion-label>
+            <ion-input type="text" [(ngModel)]="accountUser.address" formControlName="address" placeholder="Enter your address"></ion-input>
+         </ion-item>
+         <p *ngIf="formGroup.controls['address'].dirty && formGroup.controls['address'].errors">Invalid address</p>
+         
+         <ion-item>
+            <ion-label stacked>Phone number</ion-label>
+            <ion-input type="text" [(ngModel)]="accountUser.phoneNumber" formControlName="phoneNumber" placeholder="Phone number"></ion-input>
+         </ion-item>
+         <p *ngIf="formGroup.controls['phoneNumber'].dirty && formGroup.controls['phoneNumber'].errors">Invalid phone number</p>
+         
+         <ion-item>
+            <ion-label stacked>Account currency</ion-label>
+            <ion-select formControlName="currency" [(ngModel)]="accountUser.currency" formControlName="currency">
+               <ion-option *ngFor="let currency of currencies" [value]="currency.currency">{{currency.currency}}</ion-option>
+            </ion-select>
+         </ion-item>
+         <p *ngIf="formGroup.controls['currency'].dirty && formGroup.controls['currency'].errors">Select a currency</p>
+
+         <ion-item text-center>
+            <button ion-button default color="secondary" round (click)="createAccount()" [disabled]="formGroup.invalid">
+               <ion-icon name="save"></ion-icon>&nbsp;Create
+            </button>
+            <button ion-button default round (click)="back()">
+               <ion-icon name="arrow-round-back"></ion-icon>&nbsp;Back
+            </button>
+         </ion-item>
+
+      </form>
+
+   </ion-grid>
 
 
 </ion-content>

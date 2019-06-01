@@ -1,0 +1,33 @@
+<ion-content padding>
+
+   <ion-grid>
+
+      <form [formGroup]="formGroup">
+
+         <ion-item>
+            <div class="alert alert-info">
+               Deposit funds into your account
+            </div>
+         </ion-item>
+
+         <ion-item>
+            <ion-label stacked>Transaction date</ion-label>
+            <ion-datetime [(ngModel)]="deposit.date" formControldate="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+         </ion-item>
+         <p *ngIf="formGroup.controls['date'].dirty && formGroup.controls['date'].errors">Invalid date</p>
+
+         <ion-item>
+            <ion-label stacked>Ammount</ion-label>
+            <ion-input type="ammount" [(ngModel)]="deposit.ammount" formControldate="ammount" placeholder="Enter ammount"></ion-input>
+         </ion-item>
+         <p *ngIf="formGroup.controls['ammount'].dirty && formGroup.controls['ammount'].errors">Invalid ammount</p>
+
+         <ion-item text-center>
+            <button ion-button default color="secondary" round (click)="makeDeposit()" [disabled]="formGroup.invalid">
+               <ion-icon date="save"></ion-icon>&nbsp;Create
+            </button>
+         </ion-item>
+
+      </form>
+   </ion-grid>
+</ion-content>

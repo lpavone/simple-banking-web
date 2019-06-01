@@ -1,4 +1,4 @@
-export class CurrencyType {
+export class CurrencyTypeDTO {
 
    constructor(
       public currency: string
