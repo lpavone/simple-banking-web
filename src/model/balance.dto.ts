@@ -1,9 +1,8 @@
-export class DepositDTO {
+export class BalanceDTO {
 
    constructor(
       public accountNumber?: number,
-      public idUser?: number,
-      public date?: Date,
+      public currency?: string,
       public amount?: number,
    ) {
    }

@@ -1,0 +1,22 @@
+<ion-list>
+   <ion-item>
+      <h2>Account Number</h2>
+      <p>{{ receipt.accountNumber }}</p>
+   </ion-item>
+   <ion-item>
+      <h2>User</h2>
+      <p>{{ receipt.userName }}</p>
+   </ion-item>
+   <ion-item>
+      <h2>Transaction date</h2>
+      <p>{{ receipt.transactionDate | date:'MM/dd/yyyy - hh:mm:ss' }}</p>
+   </ion-item>
+   <ion-item>
+      <h2>Amout</h2>
+      <p>{{ receipt.amount | currency }}</p>
+   </ion-item>
+   <ion-item>
+      <h2>Description</h2>
+      <p>{{ receipt.description }}</p>
+   </ion-item>
+</ion-list>

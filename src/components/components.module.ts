@@ -10,6 +10,7 @@ import { MakeDepositComponent } from './make-deposit/make-deposit';
 import { BalanceComponent } from './balance/balance';
 import { TransactionsComponent } from './transactions/transactions';
 import { TransferFundComponent } from './transfer-fund/transfer-fund';
+import { ReceiptComponent } from './receipt/receipt';
 
 @NgModule({
    declarations: [
@@ -21,6 +22,7 @@ import { TransferFundComponent } from './transfer-fund/transfer-fund';
       BalanceComponent,
       TransactionsComponent,
       TransferFundComponent,
+      ReceiptComponent,
    ],
    imports: [
       BrowserModule,
@@ -35,6 +37,7 @@ import { TransferFundComponent } from './transfer-fund/transfer-fund';
       BalanceComponent,
       TransactionsComponent,
       TransferFundComponent,
+      ReceiptComponent,
    ],
    entryComponents: [
       DashboardComponent,
@@ -45,6 +48,7 @@ import { TransferFundComponent } from './transfer-fund/transfer-fund';
       BalanceComponent,
       TransactionsComponent,
       TransferFundComponent,
+      ReceiptComponent,
    ],
    providers: [
    ]

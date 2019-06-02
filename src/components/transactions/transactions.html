@@ -1,4 +1,27 @@
-<!-- Generated template for the TransactionsComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-grid>
+
+   <ion-row>
+      <ion-col col-6>
+         <h2>Description</h2>
+      </ion-col>
+      <ion-col col-3>
+         <h2>Transaction date</h2>
+      </ion-col>
+      <ion-col col-3>
+         <h2>Amout</h2>
+      </ion-col>
+   </ion-row>
+
+   <ion-row *ngFor="let receipt of receipts" table-striped>
+      <ion-col col-6>
+         <p>{{ receipt.description }}</p>
+      </ion-col>
+      <ion-col col-3>
+         <small>{{ receipt.transactionDate | date:'MM/dd/yyyy' }}</small><br/>
+         <small>{{ receipt.transactionDate | date:'hh:mm:ss' }}</small>
+      </ion-col>
+      <ion-col col-3>
+         <p>{{ receipt.amount | currency }}</p>
+      </ion-col>
+   </ion-row>
+</ion-grid>

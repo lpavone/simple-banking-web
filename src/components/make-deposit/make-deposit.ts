@@ -1,7 +1,10 @@
-import { DepositService } from './../../services/deposit.service';
+import { StorageUtil } from './../../util/storage-util';
+import { NavController } from 'ionic-angular';
 import { DepositDTO } from './../../model/deposit.dto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { TransactionService } from '../../services/transaction.service';
+import { ReceiptComponent } from '../receipt/receipt';
 
 
 @Component({
@@ -16,7 +19,9 @@ export class MakeDepositComponent {
 
    constructor(
       public formBuilder: FormBuilder,
-      public depositService: DepositService) {
+      public transactionService: TransactionService,
+      public navController: NavController,
+      public storage: StorageUtil) {
       console.log('Hello MakeDepositComponent Component');
 
       this.configureFormGroup();
@@ -25,15 +30,23 @@ export class MakeDepositComponent {
    private configureFormGroup() {
       this.formGroup = this.formBuilder.group({
          date: ['', [Validators.required]],
-         ammount: ['', [Validators.required]]
+         amount: ['', [Validators.required]]
       });
    }
 
    makeDeposit() {
-      this.depositService.makeDeposit(this.deposit).subscribe((id) => {
-         console.log('Transaction id', id);
+      this.storage.getUser().then(user => {
+         this.deposit.accountNumber = user.accountNumber;
+         this.deposit.idUser = user.idUser;
 
-         this.deposit = new DepositDTO();
+      }).then(() => {
+         this.transactionService.makeDeposit(this.deposit).subscribe((receipt) => {
+            console.log('Transaction receipt', receipt);
+   
+            this.deposit = new DepositDTO();
+   
+            this.navController.push(ReceiptComponent, { receipt: receipt });
+         });
       });
    }
 

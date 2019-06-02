@@ -17,7 +17,8 @@ export class BaseComponent {
    }
 
    back() {
-      this.navCtrl.popToRoot();
+      this.navCtrl.push(BaseComponent);
+      //this.navCtrl.setRoot(BaseComponent);
    }
 
    logout() {

@@ -12,19 +12,19 @@
 
          <ion-item>
             <ion-label stacked>Transaction date</ion-label>
-            <ion-datetime [(ngModel)]="deposit.date" formControldate="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+            <ion-datetime [(ngModel)]="deposit.date" formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
          </ion-item>
          <p *ngIf="formGroup.controls['date'].dirty && formGroup.controls['date'].errors">Invalid date</p>
 
          <ion-item>
-            <ion-label stacked>Ammount</ion-label>
-            <ion-input type="ammount" [(ngModel)]="deposit.ammount" formControldate="ammount" placeholder="Enter ammount"></ion-input>
+            <ion-label stacked>Amount</ion-label>
+            <ion-input type="amount" [(ngModel)]="deposit.amount" formControlName="amount" placeholder="Enter amount"></ion-input>
          </ion-item>
-         <p *ngIf="formGroup.controls['ammount'].dirty && formGroup.controls['ammount'].errors">Invalid ammount</p>
+         <p *ngIf="formGroup.controls['amount'].dirty && formGroup.controls['amount'].errors">Invalid amount</p>
 
          <ion-item text-center>
             <button ion-button default color="secondary" round (click)="makeDeposit()" [disabled]="formGroup.invalid">
-               <ion-icon date="save"></ion-icon>&nbsp;Create
+               <ion-icon name="cash"></ion-icon>&nbsp;Deposit
             </button>
          </ion-item>
 

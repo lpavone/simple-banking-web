@@ -1,4 +1,20 @@
-<!-- Generated template for the BalanceComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-grid>
+   <ion-row>
+      <ion-item>
+         <h2>Account Number</h2>
+         <p>{{ balance.accountNumber }}</p>
+      </ion-item>
+   </ion-row>
+   <ion-row>
+      <ion-item>
+         <h2>Currency</h2>
+         <p>{{ balance.currency }}</p>
+      </ion-item>
+   </ion-row>
+   <ion-row>
+      <ion-item [color]="'secondary'">
+         <h2>Amout</h2>
+         <p>{{ balance.amount | currency }}</p>
+      </ion-item>
+   </ion-row>
+</ion-grid>

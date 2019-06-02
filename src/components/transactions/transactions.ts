@@ -1,22 +1,28 @@
+import { StorageUtil } from './../../util/storage-util';
+import { ReceiptDTO } from './../../model/receipt.dto';
 import { Component } from '@angular/core';
+import { TransactionService } from '../../services/transaction.service';
 
-/**
- * Generated class for the TransactionsComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'transactions',
   templateUrl: 'transactions.html'
 })
 export class TransactionsComponent {
 
-  text: string;
+  receipts: ReceiptDTO[] = [];
 
-  constructor() {
+  constructor(
+     public transactionService: TransactionService,
+     private storage: StorageUtil
+  ) {
     console.log('Hello TransactionsComponent Component');
-    this.text = 'Hello World';
+
+    this.storage.getUser().then( user => {
+      transactionService.getTransactionsByAccountNumber(user.accountNumber).subscribe(receipts => {
+         this.receipts = receipts;
+      });
+    });
+
   }
 
 }

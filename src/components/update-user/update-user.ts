@@ -5,7 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { CreateAccountComponent } from './../create-account/create-account';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import { UserService } from '../../services/user.service';
 
 @Component({
    selector: 'update-user',
@@ -18,7 +17,7 @@ export class UpdateUserComponent extends CreateAccountComponent {
       public formBuilder: FormBuilder,
       public accoutService: AccountService,
       public alertCtrl: AlertController,
-      public userService: UserService,
+      public accountService: AccountService,
       public storage: StorageUtil) {
 
       super(navCtrl, formBuilder, accoutService, alertCtrl);
@@ -30,7 +29,7 @@ export class UpdateUserComponent extends CreateAccountComponent {
             console.log('user local', user);
             return user;
          }).then((user: UserDTO) => {
-            this.userService.getUserByIdUserAccountNumber(user.idUser, user.accountNumber).subscribe(
+            this.accountService.getAccountUserByIdUserAccountNumber(user.idUser, user.accountNumber).subscribe(
                (accountUser) => {
                   this.accountUser = accountUser;
                   console.log('accountUser', accountUser);
@@ -40,9 +39,10 @@ export class UpdateUserComponent extends CreateAccountComponent {
    }
 
    updateAccount() {
-      this.userService.updateUser(this.accountUser).subscribe(
+      this.accountService.updateAccountUser(this.accountUser).subscribe(
          (userUpdated: UserDTO) => {
             this.storage.setUser(userUpdated);
+            this.navCtrl.pop();
          });
    }
 

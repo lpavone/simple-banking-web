@@ -1,6 +1,5 @@
-import { DepositService } from './../services/deposit.service';
+import { TransactionService } from './../services/transaction.service';
 import { StorageUtil } from './../util/storage-util';
-import { UserService } from './../services/user.service';
 import { AccountService } from './../services/account.service';
 import { LoginService } from './../services/login.service';
 import { ComponentsModule } from './../components/components.module';
@@ -40,8 +39,7 @@ import { HomePage } from '../pages/home/home';
       { provide: ErrorHandler, useClass: IonicErrorHandler },
       LoginService,
       AccountService,
-      UserService,
-      DepositService
+      TransactionService
    ],
    exports: [
       StorageUtil
