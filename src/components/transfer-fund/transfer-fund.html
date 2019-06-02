@@ -1,4 +1,45 @@
-<!-- Generated template for the TransferFundComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-content padding>
+
+   <ion-grid>
+
+      <form [formGroup]="formGroup">
+
+         <ion-item>
+            <div class="alert alert-info">
+               Transfer funds
+            </div>
+         </ion-item>
+
+         <ion-item>
+            <ion-label stacked>Destination account</ion-label>
+            <ion-input type="accountNumberTo" [(ngModel)]="transfer.accountNumberTo" formControlName="accountNumberTo"
+               placeholder="Enter account number to" (ionBlur)="selectDestinationAccount()">
+            </ion-input>
+         </ion-item>
+         <ion-item>
+            <ion-input type="nameDestinationUser" [(ngModel)]="nameDestinationUser" formControlName="nameDestinationUser" readonly="true">
+            </ion-input>
+         </ion-item>
+
+         <ion-item>
+            <ion-label stacked>Transaction date</ion-label>
+            <ion-datetime [(ngModel)]="transfer.date" formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+         </ion-item>
+         <p class="text-danger" *ngIf="formGroup.controls['date'].dirty && formGroup.controls['date'].errors">Invalid date</p>
+
+         <ion-item>
+            <ion-label stacked>Amount</ion-label>
+            <ion-input type="amount" [(ngModel)]="transfer.amount" formControlName="amount" placeholder="Enter amount">
+            </ion-input>
+         </ion-item>
+         <p class="text-danger" *ngIf="formGroup.controls['amount'].dirty && formGroup.controls['amount'].errors">Invalid amount</p>
+
+         <ion-item text-center>
+            <button ion-button default color="secondary" round (click)="transferFunds()" [disabled]="formGroup.invalid || clicked">
+               <ion-icon name="return-right"></ion-icon>&nbsp;Transfer
+            </button>
+         </ion-item>
+
+      </form>
+   </ion-grid>
+</ion-content>

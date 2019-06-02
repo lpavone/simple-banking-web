@@ -16,7 +16,7 @@ export class DashboardComponent {
    pages: PageList;
 
    constructor(public navCtrl: NavController) {
-      console.log('Hello DashboardComponent Component');
+      console.log('DashboardComponent Component');
 
       this.getMenus();
       console.log('pages', this.pages);
@@ -40,7 +40,7 @@ export class DashboardComponent {
          },
          {
             title: 'Make deposit',
-            icon: 'deposit-icon.jpg',
+            icon: 'deposit-icon.png',
             component: MakeDepositComponent
          },
          {

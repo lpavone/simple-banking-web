@@ -3,7 +3,7 @@
    <ion-grid style="width:100%">
       <ion-row justify-content-center align-items-center>
          <ion-card class="card-content-md" style="width: 35rem" text-center no-padding>
-            <img src="assets/imgs/logo.jpg" />
+            <img src="assets/imgs/logo.png" />
             <ion-card-content>
                <ion-card-title>
                   Simple Banking
@@ -19,19 +19,22 @@
                </div>
             </ion-card-content>
 
-            <ion-item text-center>
-               <ion-label stacked>Account number</ion-label>
-               <ion-input type="number" [(ngModel)]="accountNumber" name="accountNumber" placeholder="000" text-center></ion-input>
-            </ion-item>
+            <form [formGroup]="formGroup">
+               <ion-item text-center>
+                  <ion-label stacked>Account number</ion-label>
+                  <ion-input type="number" [(ngModel)]="accountNumber" formControlName="accountNumber" placeholder="000" text-center></ion-input>
+               </ion-item>
+               <p *ngIf="formGroup.controls['accountNumber'].dirty && formGroup.controls['accountNumber'].errors">Invalid account number</p>
 
-            <ion-item text-center>
-               <button ion-button default color="secondary" round (click)="login()">
-                  <ion-icon name="lock"></ion-icon>&nbsp;Sign in
-               </button>
-               <button ion-button default round (click)="newAccount()">
-                  <ion-icon name="add"></ion-icon>&nbsp;New Account
-               </button>
-            </ion-item>
+               <ion-item text-center>
+                  <button ion-button default color="secondary" round (click)="login()">
+                     <ion-icon name="lock"></ion-icon>&nbsp;Sign in
+                  </button>
+                  <button ion-button default round (click)="newAccount()">
+                     <ion-icon name="add"></ion-icon>&nbsp;New Account
+                  </button>
+               </ion-item>
+            </form>
             
          </ion-card>
       </ion-row>

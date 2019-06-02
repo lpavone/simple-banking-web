@@ -14,31 +14,31 @@
             <ion-label stacked>Name</ion-label>
             <ion-input type="text" [(ngModel)]="accountUser.name" formControlName="name" placeholder="Full name"></ion-input>
          </ion-item>
-         <p *ngIf="formGroup.controls['name'].dirty && formGroup.controls['name'].errors">Invalid name</p>
+         <p class="text-danger" *ngIf="formGroup.controls['name'].dirty && formGroup.controls['name'].errors">Invalid name</p>
 
          <ion-item>
             <ion-label stacked>Email</ion-label>
             <ion-input type="email" [(ngModel)]="accountUser.email" formControlName="email" placeholder="Enter email"></ion-input>
          </ion-item>
-         <p *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors">Invalid email</p>
+         <p class="text-danger" *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors">Invalid email</p>
 
          <ion-item>
             <ion-label stacked>Document ID</ion-label>
             <ion-input type="documentID" [(ngModel)]="accountUser.documentID" formControlName="documentID" placeholder="Enter document ID"></ion-input>
          </ion-item>
-         <p *ngIf="formGroup.controls['documentID'].dirty && formGroup.controls['documentID'].errors">Invalid Document ID</p>
+         <p class="text-danger" *ngIf="formGroup.controls['documentID'].dirty && formGroup.controls['documentID'].errors">Invalid Document ID</p>
 
          <ion-item>
             <ion-label stacked>Address</ion-label>
             <ion-input type="text" [(ngModel)]="accountUser.address" formControlName="address" placeholder="Enter your address"></ion-input>
          </ion-item>
-         <p *ngIf="formGroup.controls['address'].dirty && formGroup.controls['address'].errors">Invalid address</p>
+         <p class="text-danger" *ngIf="formGroup.controls['address'].dirty && formGroup.controls['address'].errors">Invalid address</p>
          
          <ion-item>
             <ion-label stacked>Phone number</ion-label>
             <ion-input type="text" [(ngModel)]="accountUser.phoneNumber" formControlName="phoneNumber" placeholder="Phone number"></ion-input>
          </ion-item>
-         <p *ngIf="formGroup.controls['phoneNumber'].dirty && formGroup.controls['phoneNumber'].errors">Invalid phone number</p>
+         <p class="text-danger" *ngIf="formGroup.controls['phoneNumber'].dirty && formGroup.controls['phoneNumber'].errors">Invalid phone number</p>
          
          <ion-item>
             <ion-label stacked>Account currency</ion-label>
@@ -46,7 +46,7 @@
                <ion-option *ngFor="let currency of currencies" [value]="currency.currency">{{currency.currency}}</ion-option>
             </ion-select>
          </ion-item>
-         <p *ngIf="formGroup.controls['currency'].dirty && formGroup.controls['currency'].errors">Select a currency</p>
+         <p class="text-danger" *ngIf="formGroup.controls['currency'].dirty && formGroup.controls['currency'].errors">Select a currency</p>
 
          <ion-item text-center>
             <button ion-button default color="secondary" round (click)="createAccount()" [disabled]="formGroup.invalid">

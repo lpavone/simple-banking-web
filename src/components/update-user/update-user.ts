@@ -22,7 +22,7 @@ export class UpdateUserComponent extends CreateAccountComponent {
 
       super(navCtrl, formBuilder, accoutService, alertCtrl);
 
-      console.log('Hello UpdateUserComponent Component');
+      console.log('UpdateUserComponent Component');
 
       storage.getUser().then(
          user => {

@@ -14,7 +14,7 @@ export class BalanceComponent {
    constructor(
          public accountService: AccountService,
          public storage: StorageUtil) {
-      console.log('Hello BalanceComponent Component');
+      console.log('BalanceComponent Component');
 
       this.storage.getUser().then((user)=> {
          this.accountService.getBalanceByAccountNumber(user.accountNumber).subscribe(balance => {

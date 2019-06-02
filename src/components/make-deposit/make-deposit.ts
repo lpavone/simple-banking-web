@@ -14,15 +14,15 @@ import { ReceiptComponent } from '../receipt/receipt';
 export class MakeDepositComponent {
 
    formGroup: FormGroup;
-
    deposit: DepositDTO = new DepositDTO();
+   clicked: boolean = false;
 
    constructor(
       public formBuilder: FormBuilder,
       public transactionService: TransactionService,
       public navController: NavController,
       public storage: StorageUtil) {
-      console.log('Hello MakeDepositComponent Component');
+      console.log('MakeDepositComponent Component');
 
       this.configureFormGroup();
    }
@@ -35,6 +35,8 @@ export class MakeDepositComponent {
    }
 
    makeDeposit() {
+      this.clicked = true;
+
       this.storage.getUser().then(user => {
          this.deposit.accountNumber = user.accountNumber;
          this.deposit.idUser = user.idUser;
@@ -46,6 +48,8 @@ export class MakeDepositComponent {
             this.deposit = new DepositDTO();
    
             this.navController.push(ReceiptComponent, { receipt: receipt });
+         }, error => {
+            this.clicked = false;
          });
       });
    }

@@ -11,6 +11,6 @@ export class LoginService {
    }
 
    login(accountNumber: number): Observable<UserDTO> {
-      return this.httpClient.get<UserDTO>(`${API_CONFIG.baseUrl}/login/${accountNumber}`);
+      return this.httpClient.get<UserDTO>(`${API_CONFIG.baseUrl}/login/${accountNumber ? accountNumber : ''}`);
    }
 }

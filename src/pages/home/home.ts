@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StorageUtil } from './../../util/storage-util';
 import { BaseComponent } from './../../components/base/base';
 import { LoginService } from './../../services/login.service';
@@ -13,10 +14,17 @@ export class HomePage {
 
    accountNumber: number;
 
+   formGroup: FormGroup;
+
    constructor(
       public navCtrl: NavController,
       public loginService: LoginService,
-      public storage: StorageUtil) {
+      public storage: StorageUtil,
+      private formBuilder: FormBuilder) {
+
+      this.formGroup = this.formBuilder.group({
+         accountNumber: ['', [Validators.required]]
+      });
    }
 
    login() {

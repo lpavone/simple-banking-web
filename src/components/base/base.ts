@@ -1,3 +1,5 @@
+import { AccountUserDTO } from './../../model/account-user.dto';
+import { StorageUtil } from './../../util/storage-util';
 import { MyApp } from './../../app/app.component';
 import { DashboardComponent } from './../dashboard/dashboard';
 import { Component } from '@angular/core';
@@ -10,10 +12,13 @@ import { NavController } from 'ionic-angular';
 export class BaseComponent {
 
    rootPage: any;
-
-   constructor(public navCtrl: NavController) {
-      console.log('Hello BaseComponent Component');
+   user: AccountUserDTO = new AccountUserDTO();
+   
+   constructor(public navCtrl: NavController,
+      private storage: StorageUtil) {
+      console.log('BaseComponent Component');
       this.rootPage = DashboardComponent;
+      this.storage.getUser().then(user => this.user = user);
    }
 
    back() {

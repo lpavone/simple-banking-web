@@ -24,7 +24,7 @@ export class CreateAccountComponent {
       public accoutService: AccountService,
       public alertCtrl: AlertController) {
 
-      console.log('Hello CreateAccountComponent Component');
+      console.log('CreateAccountComponent Component');
 
       this.configureFormGroup();
 

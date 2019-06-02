@@ -11,7 +11,7 @@ export class ReceiptComponent {
    receipt: ReceiptDTO;
 
    constructor(public navParam: NavParams) {
-      console.log('Hello ReceiptComponent Component');
+      console.log('ReceiptComponent Component');
 
       this.receipt = this.navParam.get('receipt');
    }

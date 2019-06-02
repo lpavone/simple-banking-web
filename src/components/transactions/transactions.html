@@ -21,7 +21,7 @@
          <small>{{ receipt.transactionDate | date:'hh:mm:ss' }}</small>
       </ion-col>
       <ion-col col-3>
-         <p>{{ receipt.amount | currency }}</p>
+         <p [ngStyle]="getStyleCurrency(receipt)" >{{ receipt.amount | currency }}</p>
       </ion-col>
    </ion-row>
 </ion-grid>
