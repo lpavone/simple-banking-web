@@ -29,7 +29,7 @@ export class MakeDepositComponent {
 
    private configureFormGroup() {
       this.formGroup = this.formBuilder.group({
-         date: ['', [Validators.required]],
+         //date: ['', [Validators.required]],
          amount: ['', [Validators.required]]
       });
    }

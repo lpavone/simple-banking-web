@@ -27,7 +27,7 @@ export class TransferFundComponent {
       console.log('TransferFundComponent Component');
 
       this.formGroup = this.formBuilder.group({
-         date: ['', [Validators.required]],
+         //date: ['', [Validators.required]],
          amount: ['', [Validators.required]],
          accountNumberTo: ['', [Validators.required]],
          nameDestinationUser: ['', [Validators.required]]
