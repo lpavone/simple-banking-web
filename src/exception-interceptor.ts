@@ -2,7 +2,7 @@ import { ToastController } from 'ionic-angular';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
-import { map, catchError } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class ExceptionInterceptor implements HttpInterceptor {
@@ -14,25 +14,28 @@ export class ExceptionInterceptor implements HttpInterceptor {
    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       console.log('Request', request);
 
-      return next.handle(request)
-         .pipe(catchError((error: any) => {
-            if (error instanceof HttpErrorResponse) {
-               console.log(error.url, error.status, error.statusText);
-
-               switch (error.status) {
-                  case 400:
-                  case 401:
-                  case 404:
-                     this.presentToast(error.error.message);
-                     break;
-                  default:
-                     this.presentToast('Your request cannot be processed. Try again.');
-                     break;
+      return next.handle(request).pipe(
+         tap(
+            () => {},
+            (err: any) => {
+               if (err instanceof HttpErrorResponse) {
+                  console.log(err.url, err.status, err.statusText);
+   
+                  switch (err.status) {
+                     case 400:
+                     case 401:
+                     case 404:
+                        this.presentToast(err.error.message);
+                        break;
+                     default:
+                        this.presentToast('Your request cannot be processed. Try again.');
+                        break;
+                  }
                }
+   
+               throw err;
             }
-
-            throw error;
-         }));
+         ));
    }
 
    private presentToast(mensagem: string) {
